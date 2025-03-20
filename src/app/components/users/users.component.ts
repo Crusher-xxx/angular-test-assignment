@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
-import { HttpService } from '../../services/http.service';
+import { RouterModule } from '@angular/router';
+import { HttpService, User } from '../../services/http.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-users',
-  imports: [MatPaginatorModule, MatTableModule],
+  imports: [MatPaginatorModule, MatTableModule, RouterModule, MatIcon],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css',
 })
 export class UsersComponent implements OnInit {
-  items = [];
+  users: User[] = [];
   total = 0;
   pageSize = 0;
   pageIndex = 0;
@@ -21,6 +23,7 @@ export class UsersComponent implements OnInit {
     'first_name',
     'last_name',
     'email',
+    'actions',
   ];
 
   constructor(private httpService: HttpService) {}
@@ -32,8 +35,8 @@ export class UsersComponent implements OnInit {
   getUsers() {
     return this.httpService
       .getUsers(this.pageIndex + 1)
-      .subscribe((response: any) => {
-        this.items = response.data;
+      .subscribe((response) => {
+        this.users = response.data;
         this.total = response.total;
         this.pageSize = response.per_page;
       });
@@ -43,7 +46,10 @@ export class UsersComponent implements OnInit {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.total = event.length;
-    console.log(event);
     this.getUsers();
+  }
+
+  deleteUser(id: number) {
+    this.httpService.deleteUser(id);
   }
 }

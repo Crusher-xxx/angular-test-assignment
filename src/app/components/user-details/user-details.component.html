@@ -1,0 +1,24 @@
+<img src="{{ form.value.avatar }}" />
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Avatar</mat-label>
+    <input matInput type="url" formControlName="avatar" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input matInput type="text" formControlName="first_name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput type="text" formControlName="last_name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>E-mail</mat-label>
+    <input matInput type="text" formControlName="email" />
+  </mat-form-field>
+
+  <button mat-flat-button type="submit">Update</button>
+</form>
