@@ -35,6 +35,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    this.httpService.updateUser(this.id, this.form.value);
+    this.httpService.updateUser(this.id, this.form.value).subscribe();
   }
 }

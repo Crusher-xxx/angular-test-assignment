@@ -50,6 +50,6 @@ export class UsersComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    this.httpService.deleteUser(id);
+    this.httpService.deleteUser(id).subscribe();
   }
 }
