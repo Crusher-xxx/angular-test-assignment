@@ -8,3 +8,8 @@
 button {
   margin: 5px;
 }
+
+img {
+  vertical-align: middle;
+  margin: 5px;
+}
