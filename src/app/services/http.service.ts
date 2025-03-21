@@ -28,6 +28,11 @@ export class HttpService {
     var url = `${this.apiUrl}/users/${id}`;
     return this.httpClient.delete(url);
   }
+
+  login(body: Login) {
+    var url = `${this.apiUrl}/login`;
+    return this.httpClient.post(url, body);
+  }
 }
 
 export interface User {
@@ -55,4 +60,9 @@ interface UserList {
   total_pages: number;
   data: User[];
   support: Support;
+}
+
+interface Login {
+  email: string;
+  password: string;
 }

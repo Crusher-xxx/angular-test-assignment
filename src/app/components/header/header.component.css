@@ -1,0 +1,16 @@
+mat-toolbar {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  position: sticky;
+  top: 0;
+
+  justify-content: space-between;
+  display: flex;
+}
+
+button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
